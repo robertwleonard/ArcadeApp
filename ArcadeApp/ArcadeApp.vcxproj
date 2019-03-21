@@ -115,6 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArcadeApp.cpp" />
+    <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Source1.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Vec2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Vec2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
