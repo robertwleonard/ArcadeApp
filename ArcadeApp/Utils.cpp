@@ -1,7 +1,6 @@
 #include "Utils.h"
 #include <cmath>
 
-static const float EPSILON = 0.0001f;
 
 bool IsEqual(float x, float y)
 {

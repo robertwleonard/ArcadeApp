@@ -116,9 +116,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArcadeApp.cpp" />
-    <ClCompile Include="Point2D.cpp" />
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Source1.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Vec2D.cpp" />
   </ItemGroup>

@@ -22,6 +22,23 @@ public:
 	bool operator!=(const Vec2D& vec2) const;
 
 	Vec2D operator-() const;
+	Vec2D operator*(float scale) const;
+	Vec2D operator/(float scale) const;
+	Vec2D& operator*=(float scale);
+	Vec2D& operator/=(float scale);
+
+	Vec2D operator+(const Vec2D& vec) const;
+	Vec2D operator-(const Vec2D& vec) const;
+	Vec2D& operator+=(const Vec2D& vec);
+	Vec2D& operator-=(const Vec2D& vec);
+
+	float Mag2() const;
+	float Mag() const;
+
+	Vec2D GetUnitVec() const;
+	Vec2D& Normalize();
+
+	friend Vec2D operator*(float scalar, const Vec2D& vec);
 
 private:
 	float mX;
