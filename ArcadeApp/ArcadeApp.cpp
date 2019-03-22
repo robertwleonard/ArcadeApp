@@ -1,8 +1,8 @@
 #include <iostream>
-#include <string>
 #include <SDL.h>
 #undef main
-#include "Vec2D.h"
+
+#include "Color.h"
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
@@ -27,9 +27,12 @@ int main(int argc, const char* argv[])
 	}
 
 	SDL_Surface* noptrWindowSurface = SDL_GetWindowSurface(optrWindow);
-	uint32_t color = 0xFF0000;
+	SDL_PixelFormat* pixelFormat = noptrWindowSurface->format;
+	std::cout << "The window pixel format is: " << SDL_GetPixelFormatName(pixelFormat->format);
+	
+	Color::InitColorFormat(pixelFormat);
 
-	SetPixel(noptrWindowSurface, color, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	SetPixel(noptrWindowSurface, Color::Orange().GetPixelColor(), SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	SDL_UpdateWindowSurface(optrWindow);
 
 	SDL_Event sdlEvent;
