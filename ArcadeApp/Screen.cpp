@@ -9,6 +9,7 @@ Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr)
 
 Screen::~Screen()
 {
+	// Don't forget to destruct the window
 	if (moptrWindow)
 	{
 		SDL_DestroyWindow(moptrWindow);
@@ -20,6 +21,7 @@ Screen::~Screen()
 
 SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 {
+	// Make sure the initialization is valid
 	if (SDL_Init(SDL_INIT_VIDEO))
 	{
 		std::cout << "Error SDL_Init Failed" << std::endl;
@@ -29,8 +31,10 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 	mWidth = w;
 	mHeight = h;
 
+	// Create our window on the heap (must be destructed)
 	moptrWindow = SDL_CreateWindow("Aarcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWidth * mag, mHeight * mag, 0);
 
+	// If the window set up correctly, initialize the values
 	if (moptrWindow)
 	{
 		mnoptrWindowSurface = SDL_GetWindowSurface(moptrWindow);
@@ -44,6 +48,7 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 	return moptrWindow;
 }
 
+// Used in double buffering. Fill in mBackBuffer, then swap it to the front
 void Screen::SwapScreens()
 {
 	assert(moptrWindow);
@@ -52,11 +57,14 @@ void Screen::SwapScreens()
 		ClearScreen();
 		// Swap the back buffer to the surface
 		SDL_BlitScaled(mBackBuffer.GetSurface(), nullptr, mnoptrWindowSurface, nullptr);
+		// Update the window surface
 		SDL_UpdateWindowSurface(moptrWindow);
+		// Clear the back buffer for the next update
 		mBackBuffer.Clear(mClearColor);
 	}
 }
 
+// Draw at coordinates
 void Screen::Draw(int x, int y, const Color & color)
 {
 	assert(moptrWindow);
@@ -64,6 +72,7 @@ void Screen::Draw(int x, int y, const Color & color)
 		mBackBuffer.SetPixel(color, x, y);
 }
 
+// Draw a vector
 void Screen::Draw(const Vec2D & point, const Color & color)
 {
 	assert(moptrWindow);

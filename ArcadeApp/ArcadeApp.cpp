@@ -11,14 +11,15 @@ const int MAGNIFICATION = 3;
 
 int main(int argc, const char* argv[])
 {
+	// Initialize the screen and draw to it
 	Screen theScreen;
 	theScreen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
 	theScreen.Draw(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, Color::Yellow());
 	theScreen.SwapScreens();
 
+	// Set up the game loop
 	SDL_Event sdlEvent;
 	bool running = true;
-
 	while (running)
 	{
 		while (SDL_PollEvent(&sdlEvent))
