@@ -5,7 +5,6 @@
 
 ScreenBuffer::ScreenBuffer() : mSurface(nullptr)
 {
-
 }
 
 ScreenBuffer::ScreenBuffer(const ScreenBuffer & screenBuffer)
