@@ -143,10 +143,12 @@ void Vec2D::Rotate(float angle, const Vec2D & aroundPoint)
 	Vec2D thisVec(mX, mY);
 
 	thisVec -= aroundPoint;
+
 	float xRot = thisVec.mX * cosine - thisVec.mY * sine;
 	float yRot = thisVec.mX * sine + thisVec.mY * cosine;
 
 	Vec2D rot = Vec2D(xRot, yRot);
+
 	*this = rot + aroundPoint;
 }
 
