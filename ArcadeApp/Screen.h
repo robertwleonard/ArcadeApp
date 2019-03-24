@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include <vector>
 #include "ScreenBuffer.h"
 #include "Color.h"
 
@@ -28,16 +29,16 @@ public:
 	void Draw(int x, int y, const Color& color);
 	void Draw(const Vec2D& point, const Color& color);
 	void Draw(const Line2D& line, const Color& color);
-	void Draw(const Triangle& triangle, const Color& color);
-	void Draw(const AARectangle& rect, const Color& color);
-	void Draw(const Circle& circle, const Color& color);
+	void Draw(const Triangle& triangle, const Color& color, bool fill = false, const Color& fillColor = Color::White());
+	void Draw(const AARectangle& rect, const Color& color, bool fill = false, const Color& fillColor = Color::White());
+	void Draw(const Circle& circle, const Color& color, bool fill = false, const Color& fillColor = Color::White());
 
 
 private:
 	Screen(const Screen& screen);
 	Screen& operator=(const Screen& screen);
 	void ClearScreen();
-
+	void FillPoly(const std::vector<Vec2D>& points, const Color& color);
 	uint32_t mWidth;
 	uint32_t mHeight;
 
