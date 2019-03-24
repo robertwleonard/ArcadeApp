@@ -63,17 +63,22 @@ void ScreenBuffer::Clear(const Color & c)
 }
 
 // Lock the surface and set pixel at the coordinates
-void ScreenBuffer::SetPixel(const Color& color, int x, int  y)
+void ScreenBuffer::SetPixel(const Color& color, int x, int y)
 {
 	assert(mSurface);
-	// check if the surface is valid and the pixel is not out of bounds
+
 	if (mSurface && (y < mSurface->h && y >= 0 && x >= 0 && x < mSurface->w))
 	{
 		SDL_LockSurface(mSurface);
 
-		uint32_t* pixels = (uint32_t*)mSurface->pixels;
+		uint32_t * pixels = (uint32_t*)mSurface->pixels;
+
 		size_t index = GetIndex(y, x);
-		pixels[index] = color.GetPixelColor();
+		Color surfaceColor = Color(pixels[index]); //destinationColor
+		uint8_t getAlpha = color.GetAlpha();
+
+
+		pixels[index] = Color::Evaluate1MinueSourceAlpha(color, surfaceColor).GetPixelColor();
 
 		SDL_UnlockSurface(mSurface);
 	}
@@ -87,6 +92,5 @@ uint32_t ScreenBuffer::GetIndex(int r, int c)
 	{
 		return r * mSurface->w + c;
 	}
-	
 	return 0;
 }

@@ -149,7 +149,7 @@ void Screen::Draw(const Line2D & line, const Color & color)
 }
 void Screen::Draw(const Triangle & triangle, const Color & color, bool fill, const Color& fillColor)
 {
- 	if (fill)
+	if (fill)
 	{
 		FillPoly(triangle.GetPoints(), fillColor);
 	}
@@ -169,7 +169,7 @@ void Screen::Draw(const AARectangle & rect, const Color & color, bool fill, cons
 	{
 		FillPoly(rect.GetPoints(), fillColor);
 	}
-
+	
 	std::vector<Vec2D> points = rect.GetPoints();
 
 	Line2D p0p1 = Line2D(points[0], points[1]);
@@ -212,7 +212,7 @@ void Screen::Draw(const Circle & circle, const Color & color, bool fill, const C
 	if (fill)
 	{
 		FillPoly(circlePoints, fillColor);
-	}
+ 	}
 
 	// Draw the circle
 	for (const Line2D& line : lines)
