@@ -9,6 +9,7 @@
 #include <cassert>
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 
 Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr)
 {
@@ -42,10 +43,11 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 	moptrWindow = SDL_CreateWindow("Aarcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWidth * mag, mHeight * mag, 0);
 
 	// If the window set up correctly, initialize the values
+
 	if (moptrWindow)
 	{
 		mnoptrWindowSurface = SDL_GetWindowSurface(moptrWindow);
-		SDL_PixelFormat* pixelFormat = mnoptrWindowSurface->format;
+		SDL_PixelFormat * pixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 		Color::InitColorFormat(pixelFormat);
 		mClearColor = Color::Black();
 		mBackBuffer.Init(pixelFormat->format, mWidth, mHeight);
@@ -89,6 +91,8 @@ void Screen::Draw(const Vec2D & point, const Color & color)
 
 void Screen::Draw(const Line2D & line, const Color & color)
 {
+	uint8_t alpha = color.GetAlpha();
+
 	assert(moptrWindow);
 	if (moptrWindow)
 	{
