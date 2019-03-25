@@ -57,7 +57,7 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 	return moptrWindow;
 }
 
-// Used in double buffering. Fill in mBackBuffer, then swap it to the front
+// Used in double buffering. Fill in mBackBuffer, then swap it to the front once ready
 void Screen::SwapScreens()
 {
 	assert(moptrWindow);
