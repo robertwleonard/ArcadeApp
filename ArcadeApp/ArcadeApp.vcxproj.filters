@@ -25,6 +25,9 @@
     <Filter Include="App">
       <UniqueIdentifier>{e279f376-7f01-43d5-99ab-b87cdcf4b815}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{80c29139-0e7c-4c32-b568-48262f9d1d54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArcadeApp.cpp">
@@ -63,6 +66,9 @@
     <ClCompile Include="App.cpp">
       <Filter>App</Filter>
     </ClCompile>
+    <ClCompile Include="ArcadeScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -97,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="App.h">
       <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcadeScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

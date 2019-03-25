@@ -2,33 +2,38 @@
 #include <SDL.h>
 #undef main
 #include <iostream>
-#include "Line2D.h"
-#include "AARectangle.h"
-#include "Triangle.h"
-#include "Circle.h"
-#include "Color.h"
+#include "ArcadeScene.h"
+#include <cassert>
+
+App & App::Singleton()
+{
+	static App theApp;
+	return theApp;
+}
+
+bool App::Init(uint32_t width, uint32_t height, uint32_t mag)
+{
+	mnoptrWindow = mScreen.Init(width, height, mag);
+	std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
+	PushScene(std::move(arcadeScene));
+	return mnoptrWindow != nullptr;
+}
 
 void App::Run()
 {
 	if (mnoptrWindow)
 	{
-		// Initialize the screen, draw to it, then swap the buffers
-		Line2D line = { Vec2D(0,0), Vec2D(mScreen.Width(), mScreen.Height()) };
-		Triangle triangle = { Vec2D(60, 10), Vec2D(10, 110), Vec2D(110, 110) };
-		AARectangle rect = { Vec2D(mScreen.Width() / 2 - 25, mScreen.Height() / 2 - 25), 50, 50 };
-		Circle circle = { Vec2D(mScreen.Width() / 2 + 50, mScreen.Height() / 2 + 50), 50 };
-
-		mScreen.SwapScreens();
-
 		// Set up the game loop
 		SDL_Event sdlEvent;
+		bool running = true;
+
+
 		uint32_t lastTick = SDL_GetTicks();
 		uint32_t currentTick = lastTick;
 
 		uint32_t dt = 10;
 		uint32_t accumulator = 0;
 
-		bool running = true;
 		while (running)
 		{
 			currentTick = SDL_GetTicks();
@@ -51,38 +56,57 @@ void App::Run()
 				}
 			}
 
-			// Update
-			while (accumulator >= dt)
+			Scene* topScene = App::TopScene();
+			assert(topScene && "Why don't we have a scene?");
+			if (topScene)
 			{
-				// Update current scene by DT
-				std::cout << "Delta time step: " << dt << std::endl;
-				accumulator -= dt;
+				// Update
+				while (accumulator >= dt)
+				{
+					// Update current scene by DT
+					topScene->Update(dt);
+					std::cout << "Delta time step: " << dt << std::endl;
+					accumulator -= dt;
+				}
+
+				// Render
+				topScene->Draw(mScreen);
 			}
 
-			// Render
-			mScreen.Draw(triangle, Color(255, 255, 255, 80), true, Color(255, 255, 255, 80));
-			mScreen.Draw(rect, Color::Blue(), true, Color::Blue());
-			mScreen.Draw(circle, Color(255, 255, 255, 80), true, Color(0, 255, 0, 80));
-			//mScreen.Draw(line, Color::White());
-			//mScreen.Draw(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, Color::Yellow());
-
+			
 			mScreen.SwapScreens();
 		}
 	}
 }
 
-App & App::Singleton()
+void App::PushScene(std::unique_ptr<Scene> scene)
 {
-	static App theApp;
-	return theApp;
+	assert(scene && "Don't push nullptr");
+	if (scene)
+	{
+		scene->Init();
+		mSceneStack.emplace_back(std::move(scene));
+		SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
+	}
 }
 
-App::App()
+void App::PopScene()
 {
+	if (mSceneStack.size() > 1)
+		mSceneStack.pop_back();
+
+	if (TopScene())
+	{
+		SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
+	}
 }
 
-bool App::Init(uint32_t width, uint32_t height, uint32_t mag)
+Scene * App::TopScene()
 {
-	mnoptrWindow = mScreen.Init(width, height, mag);
-	return mnoptrWindow != nullptr;
+	if (mSceneStack.empty())
+		return nullptr;
+
+	return mSceneStack.back().get();
 }
+
+
