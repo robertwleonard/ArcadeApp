@@ -31,6 +31,9 @@
     <Filter Include="Input">
       <UniqueIdentifier>{069cf242-0d3b-4786-a88d-8464008ea12c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Games">
+      <UniqueIdentifier>{89c6b5d8-4314-41dd-8e76-8bc933ae027d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArcadeApp.cpp">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="InputController.cpp">
       <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="GameController.h">
       <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
