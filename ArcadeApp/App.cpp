@@ -24,7 +24,6 @@ void App::Run()
 	if (mnoptrWindow)
 	{
 		// Set up the game loop
-		SDL_Event sdlEvent;
 		bool running = true;
 
 
