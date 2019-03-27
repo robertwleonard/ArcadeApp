@@ -87,6 +87,9 @@
     <ClCompile Include="FileCommandLoader.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="BreakOut.cpp">
+      <Filter>Games</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -137,14 +140,17 @@
     <ClInclude Include="GameController.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="FileCommandLoader.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Games</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakOut.h">
+      <Filter>Games</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
