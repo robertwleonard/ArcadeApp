@@ -130,6 +130,7 @@
     <ClCompile Include="ArcadeScene.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="FileCommandLoader.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputController.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="ArcadeScene.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="FileCommandLoader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameScene.h" />

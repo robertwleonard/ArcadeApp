@@ -84,6 +84,9 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="FileCommandLoader.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FileCommandLoader.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
