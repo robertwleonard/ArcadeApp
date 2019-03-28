@@ -15,7 +15,7 @@ public:
 
 private:
 	void ResetGame();
-	const Vec2D INITIAL_BALL_VELOCITY = Vec2D(100, -100);
+	const Vec2D INITIAL_BALL_VELOCITY = Vec2D(0, 100);
 	Paddle mPaddle;
 	Ball mBall;
 	LevelBoundary mLevelBoundary;
