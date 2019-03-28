@@ -31,7 +31,7 @@ float AARectangle::GetHeight() const
 	return GetBottomRightPoint().GetY() - GetTopLeftPoint().GetY()+1;
 }
 
-void AARectangle::MoveTop(const Vec2D & position)
+void AARectangle::MoveTo(const Vec2D & position)
 {
 	float width = GetWidth();
 	float height = GetHeight();

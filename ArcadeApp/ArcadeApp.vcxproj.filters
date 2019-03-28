@@ -34,6 +34,9 @@
     <Filter Include="Games">
       <UniqueIdentifier>{89c6b5d8-4314-41dd-8e76-8bc933ae027d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Games\Breakout">
+      <UniqueIdentifier>{831f5e64-5272-45a9-8095-8686f2300878}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArcadeApp.cpp">
@@ -87,8 +90,14 @@
     <ClCompile Include="FileCommandLoader.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Excluder.cpp">
+      <Filter>Games\Breakout</Filter>
+    </ClCompile>
     <ClCompile Include="BreakOut.cpp">
-      <Filter>Games</Filter>
+      <Filter>Games\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="Paddle.cpp">
+      <Filter>Games\Breakout</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,8 +158,17 @@
     <ClInclude Include="Game.h">
       <Filter>Games</Filter>
     </ClInclude>
+    <ClInclude Include="Excluder.h">
+      <Filter>Games\Breakout</Filter>
+    </ClInclude>
     <ClInclude Include="BreakOut.h">
-      <Filter>Games</Filter>
+      <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundaryEdge.h">
+      <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Paddle.h">
+      <Filter>Games\Breakout</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -131,12 +131,14 @@
     <ClCompile Include="BreakOut.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Excluder.cpp" />
     <ClCompile Include="FileCommandLoader.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="Line2D.cpp" />
     <ClCompile Include="AARectangle.cpp" />
+    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenBuffer.cpp" />
     <ClCompile Include="Shape.cpp" />
@@ -147,9 +149,11 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="ArcadeScene.h" />
+    <ClInclude Include="BoundaryEdge.h" />
     <ClInclude Include="BreakOut.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Excluder.h" />
     <ClInclude Include="FileCommandLoader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameController.h" />
@@ -158,6 +162,7 @@
     <ClInclude Include="InputController.h" />
     <ClInclude Include="Line2D.h" />
     <ClInclude Include="AARectangle.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenBuffer.h" />

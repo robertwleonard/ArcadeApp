@@ -18,7 +18,7 @@ public:
 	float GetWidth() const;
 	float GetHeight() const;
 
-	void MoveTop(const Vec2D& position);
+	void MoveTo(const Vec2D& position);
 
 	virtual Vec2D GetCenterPoint() const override;
 
