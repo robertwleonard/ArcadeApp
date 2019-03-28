@@ -39,9 +39,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ArcadeApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -97,6 +94,15 @@
       <Filter>Games\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="Paddle.cpp">
+      <Filter>Games\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcadeApp.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Games\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBoundary.cpp">
       <Filter>Games\Breakout</Filter>
     </ClCompile>
   </ItemGroup>
@@ -168,6 +174,12 @@
       <Filter>Games\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="Paddle.h">
+      <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelBoundary.h">
       <Filter>Games\Breakout</Filter>
     </ClInclude>
   </ItemGroup>

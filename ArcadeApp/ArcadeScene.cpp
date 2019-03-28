@@ -49,7 +49,7 @@ void ArcadeScene::Update(uint32_t dt)
 
 void ArcadeScene::Draw(Screen & theScreen)
 {
-	Line2D line = { Vec2D(0,0), Vec2D(theScreen.Width(), theScreen.Height()) };
+	//Line2D line = { Vec2D(0,0), Vec2D(theScreen.Width(), theScreen.Height()) };
 	Triangle triangle = { Vec2D(60, 10), Vec2D(10, 110), Vec2D(110, 110) };
 	AARectangle rect = { Vec2D(theScreen.Width() / 2 - 25, theScreen.Height() / 2 - 25), 50, 50 };
 	Circle circle = { Vec2D(theScreen.Width() / 2 + 50, theScreen.Height() / 2 + 50), 50 };

@@ -121,7 +121,7 @@ Vec2D Vec2D::ProjectOnto(const Vec2D & vec2) const
 {
 	Vec2D unitVec2 = vec2.GetUnitVec();
 	float dot = Dot(unitVec2);
-	return vec2 * dot;
+	return unitVec2 * dot;
 }
 
 float Vec2D::AngleBetween(const Vec2D & vec2) const
