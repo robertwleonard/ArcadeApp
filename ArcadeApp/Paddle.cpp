@@ -73,20 +73,15 @@ bool Paddle::Bounce(Ball & ball)
 			assert(!IsEqual(edgeLength, 0));
 			float tx = (pointOnEdge.GetX() - edge.edge.GetP0().GetX()) / edgeLength;
 
-			if (((tx <-CORNER_BOUNCE_AMT) && ball.GetVelocity().GetX() > 0 ) 
-				|| (tx >= (1.0f - CORNER_BOUNCE_AMT) && ball.GetVelocity().GetX() < 0))
+			if (((tx <= CORNER_BOUNCE_AMT) && ball.GetVelocity().GetX() > 0) ||
+				(tx >= (1.0f - CORNER_BOUNCE_AMT) && ball.GetVelocity().GetX() < 0))
 			{
-				std::cout << " Bouncing " << ball.GetVelocity() << std::endl;
 				ball.SetVelocity(-ball.GetVelocity());
-				std::cout << " Bouncing2 " << ball.GetVelocity() << std::endl;
-
 				return true;
 			}
 		}
 
-		std::cout << " Bouncing " << ball.GetVelocity() << std::endl;
 		ball.SetVelocity(ball.GetVelocity().Reflect(edge.normal));
-		std::cout << " Bouncing2 " << ball.GetVelocity() << std::endl;
 		return true;
 	}
 
