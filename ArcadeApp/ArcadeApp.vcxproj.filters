@@ -105,6 +105,12 @@
     <ClCompile Include="LevelBoundary.cpp">
       <Filter>Games\Breakout</Filter>
     </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Games\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakoutGameLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -181,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="LevelBoundary.h">
       <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakoutGameLevel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
