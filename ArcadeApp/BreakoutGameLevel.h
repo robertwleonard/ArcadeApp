@@ -16,6 +16,8 @@ public:
 	void Update(uint32_t dt, Ball& ball);
 	void Draw(Screen& screen);
 
+	static std::vector<BreakoutGameLevel> LoadLevelsFromFile(const std::string& filePath);
+
 private:
 	static const unsigned int BLOCK_WIDTH = 16;
 	static const unsigned int BLOCK_HEIGHT = 8;
