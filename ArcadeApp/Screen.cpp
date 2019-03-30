@@ -14,12 +14,32 @@
 #include <algorithm>
 #include <iostream>
 
-Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr)
+Screen::Screen() 
+	: mWidth(0), mHeight(0), moptrWindow(nullptr), mnoptrWindowSurface(nullptr),
+		mRenderer(nullptr), mPixelFormat(nullptr), mTexture(nullptr), mFast(true)
 {
 }
 
 Screen::~Screen()
 {
+	if (mPixelFormat)
+	{
+		SDL_FreeFormat(mPixelFormat);
+		mPixelFormat = nullptr;
+	}
+
+	if (mTexture)
+	{
+		SDL_DestroyTexture(mTexture);
+		mTexture = nullptr;
+	}
+
+	if (mRenderer)
+	{
+		SDL_DestroyRenderer(mRenderer);
+		mRenderer = nullptr;
+	}
+
 	// Don't forget to destruct the window
 	if (moptrWindow)
 	{
@@ -30,8 +50,10 @@ Screen::~Screen()
 	SDL_Quit();
 }
 
-SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
+SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag, bool fast)
 {
+	mFast = true;
+
 	// Make sure the initialization is valid
 	if (SDL_Init(SDL_INIT_VIDEO))
 	{
@@ -49,11 +71,39 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 
 	if (moptrWindow)
 	{
-		mnoptrWindowSurface = SDL_GetWindowSurface(moptrWindow);
-		SDL_PixelFormat * pixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-		Color::InitColorFormat(pixelFormat);
-		mClearColor = Color::Black();
-		mBackBuffer.Init(pixelFormat->format, mWidth, mHeight);
+		uint8_t rClear = 0;
+		uint8_t gClear = 0;
+		uint8_t bClear = 0;
+		uint8_t aClear = 255;
+
+		if (mFast)
+		{
+			mRenderer = SDL_CreateRenderer(moptrWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+			if (mRenderer == nullptr)
+			{
+				std::cout << "SDL_CreateRenderer failed" << std::endl;
+				return nullptr;
+			}
+
+			SDL_SetRenderDrawColor(mRenderer, rClear, gClear, bClear, aClear);
+		}
+		else
+		{
+			mnoptrWindowSurface = SDL_GetWindowSurface(moptrWindow);
+		}
+
+		//mPixelFormat = SDL_AllocFormat(SDL_GetWindowPixelFormat(moptrWindow));
+		mPixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
+		
+		if (mFast)
+		{
+			mTexture = SDL_CreateTexture(mRenderer, mPixelFormat->format, SDL_TEXTUREACCESS_STREAMING, w, h);
+		}
+
+		Color::InitColorFormat(mPixelFormat);
+		mClearColor = Color(rClear, gClear, bClear, aClear);
+		mBackBuffer.Init(mPixelFormat->format, mWidth, mHeight);
 		mBackBuffer.Clear(mClearColor);
 	}
 
@@ -67,10 +117,30 @@ void Screen::SwapScreens()
 	if (moptrWindow)
 	{
 		ClearScreen();
-		// Swap the back buffer to the surface
-		SDL_BlitScaled(mBackBuffer.GetSurface(), nullptr, mnoptrWindowSurface, nullptr);
-		// Update the window surface
-		SDL_UpdateWindowSurface(moptrWindow);
+
+		if (mFast)
+		{
+			uint8_t* textureData = nullptr;
+			int texturePitch = 0;
+
+			if (SDL_LockTexture(mTexture, nullptr, (void**)&textureData, &texturePitch) >= 0)
+			{
+				SDL_Surface* surface = mBackBuffer.GetSurface();
+				memcpy(textureData, surface->pixels, surface->w * surface->h * mPixelFormat->BytesPerPixel);
+				SDL_UnlockTexture(mTexture);
+				SDL_RenderCopy(mRenderer, mTexture, nullptr, nullptr);
+
+				SDL_RenderPresent(mRenderer);
+			}
+		}
+		else
+		{
+			// Swap the back buffer to the surface
+			SDL_BlitScaled(mBackBuffer.GetSurface(), nullptr, mnoptrWindowSurface, nullptr);
+			// Update the window surface
+			SDL_UpdateWindowSurface(moptrWindow);
+		}
+
 		// Clear the back buffer for the next update
 		mBackBuffer.Clear(mClearColor);
 	}
@@ -306,7 +376,14 @@ void Screen::ClearScreen()
 {
 	assert(moptrWindow);
 	if (moptrWindow)
-		SDL_FillRect(mnoptrWindowSurface, nullptr, mClearColor.GetPixelColor());
+		if (mFast)
+		{
+			SDL_RenderClear(mRenderer);
+		}
+		else
+		{
+			SDL_FillRect(mnoptrWindowSurface, nullptr, mClearColor.GetPixelColor());
+		}
 }
 
 void Screen::FillPoly(const std::vector<Vec2D>& points, FillPolyFunc func)
