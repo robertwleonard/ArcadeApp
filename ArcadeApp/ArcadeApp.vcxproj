@@ -130,6 +130,7 @@
     <ClCompile Include="ArcadeScene.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BMPImage.cpp" />
     <ClCompile Include="BreakOut.cpp" />
     <ClCompile Include="BreakoutGameLevel.cpp" />
     <ClCompile Include="Circle.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="ArcadeScene.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Block.h" />
+    <ClInclude Include="BMPImage.h" />
     <ClInclude Include="BoundaryEdge.h" />
     <ClInclude Include="BreakOut.h" />
     <ClInclude Include="BreakoutGameLevel.h" />

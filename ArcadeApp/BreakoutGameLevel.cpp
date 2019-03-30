@@ -226,7 +226,6 @@ void BreakoutGameLevel::CreateDefaultLevel(const AARectangle & boundary)
 
 	const int NUM_BLOCKS_ACROSS = ((int)boundary.GetWidth() - (2 * (BLOCK_WIDTH))) / BLOCK_WIDTH;
 	const int NUM_BLOCK_ROWS = 5;
-	std::cout << (int)boundary.GetWidth() << std::endl;
 
 	float startX = ((int)boundary.GetWidth() - (NUM_BLOCKS_ACROSS * (BLOCK_WIDTH+1)))/2;
 

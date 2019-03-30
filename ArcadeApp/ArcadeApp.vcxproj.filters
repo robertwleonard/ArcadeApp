@@ -111,6 +111,9 @@
     <ClCompile Include="BreakoutGameLevel.cpp">
       <Filter>Games\Breakout</Filter>
     </ClCompile>
+    <ClCompile Include="BMPImage.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="BreakoutGameLevel.h">
       <Filter>Games\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPImage.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

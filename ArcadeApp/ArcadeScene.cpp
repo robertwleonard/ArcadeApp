@@ -6,6 +6,7 @@
 #include "Line2D.h"
 #include "Color.h"
 #include "GameController.h"
+#include "App.h"
 
 ArcadeScene::ArcadeScene()
 {
@@ -13,6 +14,8 @@ ArcadeScene::ArcadeScene()
 
 void ArcadeScene::Init()
 {
+	mTempImage.Load(App::Singleton().GetBasePath() + "Assets//ArcadeFont.bmp");
+
 	ButtonAction action;
 	action.key = GameController::ActionKey();
 	action.action = [](uint32_t dt, InputState state) 
@@ -49,16 +52,7 @@ void ArcadeScene::Update(uint32_t dt)
 
 void ArcadeScene::Draw(Screen & theScreen)
 {
-	//Line2D line = { Vec2D(0,0), Vec2D(theScreen.Width(), theScreen.Height()) };
-	Triangle triangle = { Vec2D(60, 10), Vec2D(10, 110), Vec2D(110, 110) };
-	AARectangle rect = { Vec2D(theScreen.Width() / 2 - 25, theScreen.Height() / 2 - 25), 50, 50 };
-	Circle circle = { Vec2D(theScreen.Width() / 2 + 50, theScreen.Height() / 2 + 50), 50 };
-
-	theScreen.Draw(triangle, Color(255, 255, 255, 80), true, Color(255, 255, 255, 80));
-	theScreen.Draw(rect, Color::Blue(), true, Color::Blue());
-	theScreen.Draw(circle, Color(255, 255, 255, 80), true, Color(0, 255, 0, 80));
-	//mScreen.Draw(line, Color::White());
-	//mScreen.Draw(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, Color::Yellow());
+	theScreen.Draw(mTempImage, Vec2D::Zero);
 }
 
 const std::string & ArcadeScene::GetSceneName() const
