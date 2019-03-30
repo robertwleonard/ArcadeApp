@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include <memory>
-#include "BMPImage.h"
+#include "SpriteSheet.h"
 
 class Screen;
 
@@ -28,5 +28,6 @@ private:
 	std::unique_ptr<Scene> GetScene(eGame game);
 
 	BMPImage mTempImage;
+	SpriteSheet mTempSS;
 };
 

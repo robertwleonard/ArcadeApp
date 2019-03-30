@@ -14,7 +14,7 @@ ArcadeScene::ArcadeScene()
 
 void ArcadeScene::Init()
 {
-	mTempImage.Load(App::Singleton().GetBasePath() + "Assets//ArcadeFont.bmp");
+	mTempSS.Load("ArcadeFont");
 
 	ButtonAction action;
 	action.key = GameController::ActionKey();
@@ -42,7 +42,7 @@ void ArcadeScene::Init()
 
 	mGameController.SetMouseMovedAction([](const MousePosition& mousePosition)
 	{
-		std::cout << "Mouse position x: " << mousePosition.xPos << " y: " << mousePosition.yPos << std::endl;
+		//std::cout << "Mouse position x: " << mousePosition.xPos << " y: " << mousePosition.yPos << std::endl;
 	});
 }
 
@@ -52,7 +52,7 @@ void ArcadeScene::Update(uint32_t dt)
 
 void ArcadeScene::Draw(Screen & theScreen)
 {
-	theScreen.Draw(mTempImage, Vec2D::Zero);
+	theScreen.Draw(mTempSS, "9", Vec2D::Zero);
 }
 
 const std::string & ArcadeScene::GetSceneName() const

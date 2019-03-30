@@ -1,3 +1,5 @@
+#include <string>
+
 static const float EPSILON = 0.0001f;
 const float PI = 3.14159f;
 const float TWO_PI = 2.0f * PI;
@@ -8,3 +10,5 @@ bool IsLessThanOrEqual(float x, float y);
 
 float MillisecondsToSeconds(unsigned int milliseconds);
 unsigned int GetIndex(unsigned int width, unsigned int r, unsigned int c);
+
+bool StringCompare(const std::string& a, const std::string& b);
