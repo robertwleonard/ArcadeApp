@@ -114,8 +114,11 @@
     <ClCompile Include="BMPImage.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="BitmapFont.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,7 +207,10 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="SpriteSheet.h">
-      <Filter>Header Files</Filter>
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapFont.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

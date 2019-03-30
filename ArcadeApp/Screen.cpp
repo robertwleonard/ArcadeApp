@@ -6,6 +6,7 @@
 #include "Circle.h"
 #include "BMPImage.h"
 #include "SpriteSheet.h"
+#include "BitmapFont.h"
 #include "Utils.h"
 #include <SDL.h>
 #include <cassert>
@@ -245,6 +246,28 @@ void Screen::Draw(const BMPImage & image, const Sprite& sprite, const Vec2D &(po
 void Screen::Draw(const SpriteSheet & ss, const std::string & spriteName, const Vec2D & pos)
 {
 	Draw(ss.GetBMPImage(), ss.GetSprite(spriteName), pos);
+}
+
+void Screen::Draw(const BitmapFont & font, const std::string & textLine, const Vec2D & atPosition)
+{
+	uint32_t xPos = atPosition.GetX();
+
+	const SpriteSheet& ss = font.GetSpriteSheet();
+
+	for (char c : textLine)
+	{
+		if (c == ' ')
+		{
+			xPos += font.GetFontSpacingBetweenWords();
+			continue;
+		}
+
+		Sprite sprite = ss.GetSprite(std::string("") + c);
+		Draw(ss.GetBMPImage(), sprite, Vec2D(xPos, atPosition.GetY()));
+
+		xPos += sprite.width;
+		xPos += font.GetFontSpacingBetweenLetters();
+	}
 }
 
 void Screen::ClearScreen()

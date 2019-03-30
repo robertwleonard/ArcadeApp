@@ -129,6 +129,7 @@
     <ClCompile Include="ArcadeApp.cpp" />
     <ClCompile Include="ArcadeScene.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="BitmapFont.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BMPImage.cpp" />
     <ClCompile Include="BreakOut.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="App.h" />
     <ClInclude Include="ArcadeScene.h" />
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="BitmapFont.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BMPImage.h" />
     <ClInclude Include="BoundaryEdge.h" />
