@@ -56,12 +56,12 @@ void ArcadeScene::Draw(Screen & theScreen)
 	Vec2D textDrawPosition;
 	textDrawPosition = font.GetDrawPosition(GetSceneName(), rect, BFXA_CENTER, BFYA_CENTER);
 
-	theScreen.Draw(font, GetSceneName(), textDrawPosition);
+	theScreen.Draw(font, GetSceneName(), textDrawPosition, Color::Green());
 }
 
 const std::string & ArcadeScene::GetSceneName() const
 {
-	static std::string sceneName = "Aarchade Scene";
+	static std::string sceneName = "Aarchade";
 	return sceneName;
 }
 

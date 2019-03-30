@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include <functional>
 #include <vector>
 #include "ScreenBuffer.h"
 #include "Color.h"
@@ -36,16 +37,20 @@ public:
 	void Draw(const Triangle& triangle, const Color& color, bool fill = false, const Color& fillColor = Color::White());
 	void Draw(const AARectangle& rect, const Color& color, bool fill = false, const Color& fillColor = Color::White());
 	void Draw(const Circle& circle, const Color& color, bool fill = false, const Color& fillColor = Color::White());
-	void Draw(const BMPImage& image, const Sprite& sprite, const Vec2D&(pos));
-	void Draw(const SpriteSheet& ss, const std::string& spriteName, const Vec2D& pos);
-	void Draw(const BitmapFont& font, const std::string& textLine, const Vec2D& atPosition);
+
+	void Draw(const BMPImage& image, const Sprite& sprite, const Vec2D&(pos), const Color& overlayColor = Color::White());
+	void Draw(const SpriteSheet& ss, const std::string& spriteName, const Vec2D& pos, const Color& overlayColor = Color::White());
+	void Draw(const BitmapFont& font, const std::string& textLine, const Vec2D& atPosition, const Color& overlayColor = Color::White());
 
 
 private:
 	Screen(const Screen& screen);
 	Screen& operator=(const Screen& screen);
 	void ClearScreen();
-	void FillPoly(const std::vector<Vec2D>& points, const Color& color);
+
+	using FillPolyFunc = std::function<Color (uint32_t x, uint32_t y)>;
+
+	void FillPoly(const std::vector<Vec2D>& points, FillPolyFunc func);
 	uint32_t mWidth;
 	uint32_t mHeight;
 
