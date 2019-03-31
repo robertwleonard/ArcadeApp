@@ -3,14 +3,12 @@
 #include "BitmapFont.h"
 #include "Utils.h"
 
-
-
-ButtonOptionsScene::ButtonOptionsScene(const std::vector<std::string>& optionNames, const Color& textColor)
+ButtonOptionsScene::ButtonOptionsScene(const std::vector<std::string>& optionNames, const Color& textColor) 
 	: mHighlightedOption(0)
 {
 	const BitmapFont & font = App::Singleton().GetFont();
 
-	for (size_t i = 0; optionNames.size(); ++i)
+	for (size_t i = 0; i < optionNames.size(); ++i)
 	{
 		mButtons.push_back(Button(font, textColor));
 		mButtons.back().SetButtonText(optionNames[i]);
@@ -35,7 +33,7 @@ void ButtonOptionsScene::Init()
 	mGameController.AddInputActionForKey(upAction);
 
 	ButtonAction downAction;
-	downAction.key = GameController::UpKey();
+	downAction.key = GameController::DownKey();
 	downAction.action = [this](uint32_t dt, InputState state) {
 		if (GameController::IsPressed(state))
 		{

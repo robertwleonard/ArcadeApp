@@ -146,6 +146,7 @@
     <ClCompile Include="LevelBoundary.cpp" />
     <ClCompile Include="Line2D.cpp" />
     <ClCompile Include="AARectangle.cpp" />
+    <ClCompile Include="NotImplementedScene.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenBuffer.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="LevelBoundary.h" />
     <ClInclude Include="Line2D.h" />
     <ClInclude Include="AARectangle.h" />
+    <ClInclude Include="NotImplementedScene.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Screen.h" />
