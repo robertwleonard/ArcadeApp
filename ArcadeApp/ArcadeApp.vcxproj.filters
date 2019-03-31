@@ -120,6 +120,12 @@
     <ClCompile Include="SpriteSheet.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonOptionsScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -211,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="BitmapFont.h">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonOptionsScene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
