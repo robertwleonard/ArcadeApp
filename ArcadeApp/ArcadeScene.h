@@ -1,5 +1,6 @@
 #pragma once
 #include "ButtonOptionsScene.h"
+#include "AnimationPlayer.h"
 #include <memory>
 
 class Screen;
@@ -25,5 +26,8 @@ public:
 
 private:
 	std::unique_ptr<Scene> GetScene(eGame game);
+
+	AnimationPlayer mAnimationPlayer;
+	SpriteSheet mSpriteSheet;
 };
 

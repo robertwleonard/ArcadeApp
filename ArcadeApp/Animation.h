@@ -19,31 +19,36 @@ class Animation
 {
 public:
 	Animation();
+
 	AnimationFrame GetAnimationFrame(uint32_t frameNum) const;
-	inline void AddFrame(const std::string& frame) { mFrames.push_back(frame); }
-	inline void AddFrameColor(const Color& color) { mFrameColors.push_back(color); }
-	inline void AddOverlayFrameColor(const Color& color) { mOverlayColors.push_back(color); }
-	inline void AddFrameOffset(const Vec2D& offset) { mFrameOffsets.push_back(offset); }
 
-	inline void SetSpriteSheetName(const std::string& spriteSheetName) {mSpriteSheetName = spriteSheetName;}
-	inline const std::string& GetSpriteSheetName() const { return mSpriteSheetName; }
+	void AddFrame(const std::string& frame) { mFrames.push_back(frame); }
+	void AddFrameColor(const Color& color) { mFrameColors.push_back(color); }
+	void AddOverlayFrameColor(const Color& color) { mOverlayColors.push_back(color); }
+	void AddFrameOffset(const Vec2D& offset) { mFrameOffsets.push_back(offset); }
 
-	inline void SetName(const std::string& animationName) {mAnimationName = animationName; }
-	inline const std::string& GetName() const { return mAnimationName; }
+	void SetSpriteSheetName(const std::string& spriteSheetName) { mSpriteSheetName = spriteSheetName; }
+	const std::string& GetSpriteSheetName() const { return mSpriteSheetName; }
 
-	inline Vec2D Size() const { return mSize; }
+	void SetName(const std::string& animationName) { mAnimationName = animationName; }
+	const std::string& GetName() const { return mAnimationName; }
 
-	inline void SetSize(const Vec2D& size) { mSize = size; }
-	inline void SetFPS(int fps) { mFPS = fps; }
-	inline int FPS() const {return mFPS;}
+	Vec2D Size() const { return mSize; }
 
-	inline void SetOverlay(const std::string& overlayName) {mOverlay = overlayName;}
-	inline const std::string& OverlayName() const {return mOverlay;}
+	void SetSize(const Vec2D & size) { mSize = size; }
 
-	inline size_t NumFrames() const { return mFrames.size(); }
-	inline size_t NumFrameColors() const { return mFrameColors.size(); }
-	inline size_t NumOverlayColors() const { return mOverlayColors.size(); }
-	inline size_t NumFrameOffsets() const { return mFrameOffsets.size(); }
+	void SetFPS(int fps) { mFPS = fps; }
+	int FPS() const { return mFPS; }
+
+	void SetOverlay(const std::string& overlayName) { mOverlay = overlayName; }
+	const std::string& OverlayName() const { return mOverlay; }
+
+	size_t NumFrames() const { return mFrames.size(); }
+	size_t NumFrameColors() const { return mFrameColors.size(); }
+	size_t NumOverlayColors() const { return mOverlayColors.size(); }
+	size_t NumFrameOffsets() const { return mFrameOffsets.size(); }
+
+	static std::vector<Animation> LoadAnimations(const std::string& animationFilePath);
 
 private:
 	std::string mAnimationName;

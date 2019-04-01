@@ -132,6 +132,9 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="AnimationPlayer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -234,6 +237,9 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationPlayer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
